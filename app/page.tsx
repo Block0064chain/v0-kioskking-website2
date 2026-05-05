@@ -232,57 +232,39 @@ function MenuSection() {
   const menuCategories = [
     {
       name: "Mocktails",
-      items: [
-        { name: "Blue Lagoon", tag: "Signature" },
-        { name: "Virgin Mojito", tag: null },
-        { name: "Sunset Cooler", tag: "Most Loved" },
-        { name: "Mango Tango", tag: null },
-      ]
+      image: "/images/blue-lagoon.jpg",
+      items: ["Blue Lagoon", "Virgin Mojito", "Sunset Cooler", "Mango Tango"],
+      signature: "Blue Lagoon"
     },
     {
       name: "Cold Coffee",
-      items: [
-        { name: "Classic Cold Coffee", tag: "Most Loved" },
-        { name: "Hazelnut Frappe", tag: null },
-        { name: "Caramel Latte", tag: null },
-        { name: "Mocha Blast", tag: "Signature" },
-      ]
+      image: "/images/gallery-1.jpg",
+      items: ["Classic Cold Coffee", "Hazelnut Frappe", "Caramel Latte", "Mocha Blast"],
+      signature: "Mocha Blast"
     },
     {
       name: "Shakes",
-      items: [
-        { name: "Oreo Shake", tag: "Most Loved" },
-        { name: "Belgian Chocolate", tag: null },
-        { name: "Strawberry Dream", tag: null },
-        { name: "Nutella Special", tag: "Signature" },
-      ]
+      image: "/images/gallery-2.jpg",
+      items: ["Oreo Shake", "Belgian Chocolate", "Strawberry Dream", "Nutella Special"],
+      signature: "Nutella Special"
     },
     {
       name: "Momos",
-      items: [
-        { name: "Veg Momos", tag: "Signature" },
-        { name: "Paneer Momos", tag: null },
-        { name: "Tandoori Momos", tag: "Most Loved" },
-        { name: "Fried Momos", tag: null },
-      ]
+      image: "/images/veg-momos.jpg",
+      items: ["Veg Momos", "Paneer Momos", "Tandoori Momos", "Fried Momos"],
+      signature: "Veg Momos"
     },
     {
       name: "Burgers",
-      items: [
-        { name: "Paneer Burger", tag: "Signature" },
-        { name: "Aloo Tikki Burger", tag: null },
-        { name: "Cheese Loaded Burger", tag: "Most Loved" },
-        { name: "Veggie Supreme", tag: null },
-      ]
+      image: "/images/paneer-burger.jpg",
+      items: ["Paneer Burger", "Aloo Tikki Burger", "Cheese Loaded Burger", "Veggie Supreme"],
+      signature: "Paneer Burger"
     },
     {
       name: "Fries",
-      items: [
-        { name: "Peri Peri Fries", tag: "Signature" },
-        { name: "Cheese Fries", tag: "Most Loved" },
-        { name: "Classic Salted", tag: null },
-        { name: "Loaded Nachos Fries", tag: null },
-      ]
+      image: "/images/peri-peri-fries.jpg",
+      items: ["Peri Peri Fries", "Cheese Fries", "Classic Salted", "Loaded Nachos Fries"],
+      signature: "Peri Peri Fries"
     },
   ]
 
@@ -296,56 +278,42 @@ function MenuSection() {
           Curated with passion. Crafted with perfection.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {menuCategories.map((category, catIndex) => (
             <div 
               key={category.name}
-              className={`transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${catIndex * 100}ms` }}
             >
-              <h3 className="text-xl font-semibold text-primary mb-6 border-b border-border pb-2">{category.name}</h3>
-              <ul className="space-y-4">
-                {category.items.map((item) => (
-                  <li key={item.name} className="flex items-center justify-between group">
-                    <span className="text-foreground group-hover:text-primary transition-colors">{item.name}</span>
-                    {item.tag && (
-                      <span className={`text-xs px-2 py-1 rounded ${
-                        item.tag === "Signature" ? "bg-primary/20 text-primary" : "bg-accent/20 text-accent"
-                      }`}>
-                        {item.tag}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              {/* Category Image */}
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                <h3 className="absolute bottom-4 left-4 text-xl font-bold text-primary">{category.name}</h3>
+              </div>
+              
+              {/* Menu Items */}
+              <div className="p-5">
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li key={item} className="flex items-center justify-between text-sm">
+                      <span className="text-foreground">{item}</span>
+                      {item === category.signature && (
+                        <span className="text-xs px-2 py-0.5 rounded bg-primary/20 text-primary">
+                          Signature
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
-        </div>
-
-        {/* Signature Items Highlight */}
-        <div className={`mt-20 transition-all duration-700 delay-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-bold text-center mb-10 text-foreground">Signature Picks</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: "Blue Lagoon", image: "/images/blue-lagoon.jpg" },
-              { name: "Veg Momos", image: "/images/veg-momos.jpg" },
-              { name: "Peri Peri Fries", image: "/images/peri-peri-fries.jpg" },
-              { name: "Paneer Burger", image: "/images/paneer-burger.jpg" },
-            ].map((item) => (
-              <div key={item.name} className="group">
-                <div className="relative aspect-square rounded-lg overflow-hidden mb-3 ring-2 ring-transparent hover:ring-primary transition-all">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                  <span className="absolute bottom-3 left-3 text-sm font-medium text-primary">{item.name}</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
