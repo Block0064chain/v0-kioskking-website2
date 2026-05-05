@@ -191,7 +191,8 @@ function ExperienceSection() {
                 src="/images/blue-lagoon.jpg"
                 alt="Blue Lagoon Mocktail"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover object-center hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-700 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -199,7 +200,8 @@ function ExperienceSection() {
                 src="/images/veg-momos.jpg"
                 alt="Veg Momos"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover object-center hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-700 delay-400 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -207,7 +209,8 @@ function ExperienceSection() {
                 src="/images/peri-peri-fries.jpg"
                 alt="Peri Peri Fries"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover object-center hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className={`relative aspect-square rounded-lg overflow-hidden transition-all duration-700 delay-500 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -215,7 +218,8 @@ function ExperienceSection() {
                 src="/images/paneer-burger.jpg"
                 alt="Paneer Burger"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover object-center hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
