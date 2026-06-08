@@ -909,7 +909,6 @@ function LocationSection() {
 }
 
 
-
 // Footer
 function Footer({ onOpenForm }: { onOpenForm: () => void }) {
   return (
